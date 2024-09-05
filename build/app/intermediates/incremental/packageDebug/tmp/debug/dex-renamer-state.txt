@@ -1,0 +1,4 @@
+#Wed Sep 04 15:15:42 EST 2024
+base.0=/Users/rgarciavital/Downloads/Movies-App-main/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
