@@ -22,11 +22,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFF242A32),
         textTheme: const TextTheme(
-          bodyText1: TextStyle(
+          bodyLarge: TextStyle(
             color: Colors.white,
             fontFamily: 'Poppins',
           ),
-          bodyText2: TextStyle(
+          bodyMedium: TextStyle(
             color: Colors.white,
             fontFamily: 'Poppins',
           ),
