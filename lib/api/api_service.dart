@@ -5,6 +5,8 @@ import 'package:movies_app/models/movie.dart';
 import 'package:http/http.dart' as http;
 import 'package:movies_app/models/review.dart';
 
+import '../models/negocio.dart';
+
 class ApiService {
   static Future<List<Movie>?> getTopRatedMovies() async {
     List<Movie> movies = [];
@@ -114,19 +116,48 @@ class ApiService {
     }
   }
 
-
-  /*static Future<String> getToken(int userid) async {
-    String token = "";
+  static Future<List<Negocio>?> getSearchStore(String querryBusqueda,double lat,double lon,int radio) async {
+    List<Negocio> negocio = [];
     try {
       http.Response response = await http.get(
-          Uri.parse('https://api.themoviedb.org/3/token/$userid'),
+          Uri.parse('${Api.baseUrlMap}$querryBusqueda/$lat,$lon/$radio/${Api.apiKeyMap}'),
           headers: Api.headers);
-     token = response.body;
-
-      return token;
+      var res = jsonDecode(response.body);
+      res.forEach(
+            (r) {
+              negocio.add(
+                Negocio(
+                  clee: r['CLEE'],
+                  id: r['Id'],
+                  nombre: r['Nombre'],
+                  razonSocial: r['Razon_social'],
+                  claseActividad: r['Clase_actividad'],
+                  estrato: r['Estrato'],
+                  tipoVialidad: r['Tipo_vialidad'],
+                  calle: r['Calle'],
+                  numExterior: r['Num_Exterior'],
+                  numInterior: r['Num_Interior'],
+                  colonia: r['Colonia'],
+                  cp: r['CP'],
+                  ubicacion: r['Ubicacion'],
+                  telefono: r['Telefono'],
+                  correoE: r['Correo_e'],
+                  sitioInternet: r['Sitio_internet'],
+                  tipo: r['Tipo'],
+                  longitud: r['Longitud'],
+                  latitud: r['Latitud'],
+                  centroComercial: r['CentroComercial'],
+                  tipoCentroComercial: r['TipoCentroComercial'],
+                  numLocal: r['NumLocal'],
+                ),
+          );
+        },
+      );
+      return negocio;
     } catch (e) {
-      return "";
+      return null;
     }
-  }*/
+  }
+
 
 }

@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-List<Welcome> welcomeFromJson(String str) => List<Welcome>.from(json.decode(str).map((x) => Welcome.fromJson(x)));
+List<Negocio> negocioFromJson(String str) => List<Negocio>.from(json.decode(str).map((x) => Negocio.fromJson(x)));
 
-String welcomeToJson(List<Welcome> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String negocioToJson(List<Negocio> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Welcome {
+class Negocio {
   String clee;
   String id;
   String nombre;
@@ -28,7 +28,7 @@ class Welcome {
   String tipoCentroComercial;
   String numLocal;
 
-  Welcome({
+  Negocio({
     required this.clee,
     required this.id,
     required this.nombre,
@@ -53,7 +53,7 @@ class Welcome {
     required this.numLocal,
   });
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+  factory Negocio.fromJson(Map<String, dynamic> json) => Negocio(
     clee: json["CLEE"],
     id: json["Id"],
     nombre: json["Nombre"],
