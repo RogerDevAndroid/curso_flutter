@@ -7,6 +7,9 @@ class Api {
   };
   static const baseUrlMap = "https://www.inegi.org.mx/app/api/denue/v1/consulta/Buscar/";
   static const apiKeyMap = "0573de64-f0e3-4488-8711-9b2eb2960e3d";
+  static const apiGoogleMaps = "AIzaSyDiMIE59kAJ-cCu0dyO0r2PpctNb68ftrI";
+
+
 
 }
 
