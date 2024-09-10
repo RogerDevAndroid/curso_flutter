@@ -9,6 +9,7 @@ class Movie {
   String releaseDate;
   double voteAverage;
   List<int> genreIds;
+
   Movie({
     required this.id,
     required this.title,
@@ -34,4 +35,27 @@ class Movie {
   }
 
   factory Movie.fromJson(String source) => Movie.fromMap(json.decode(source));
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'posterPath': posterPath,
+      'backdropPath': backdropPath,
+      'releaseDate': releaseDate,
+      'voteAverage': voteAverage,
+    };
+  }
+
+  factory Movie.fromMapSave(Map<String, dynamic> map) {
+    return Movie(
+        id: map['id'] as int,
+        title: map['title'] ?? '',
+        posterPath: map['posterPath'] ?? '',
+        backdropPath: map['backdropPath'] ?? '',
+        overview: map['overview'] ?? '',
+        releaseDate: map['releaseDate'] ?? '',
+        voteAverage: map['voteAverage']?.toDouble() ?? 0.0,
+        genreIds: []);
+  }
 }

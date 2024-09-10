@@ -52,7 +52,7 @@ class Main extends StatelessWidget {
                           : const Color(0xFF67686D),
                     ),
                   ),
-                  label: 'Inicio',
+                  label: 'Home'.tr,
                 ),
                 BottomNavigationBarItem(
                   icon: Container(
@@ -66,7 +66,7 @@ class Main extends StatelessWidget {
                           : const Color(0xFF67686D),
                     ),
                   ),
-                  label: 'Buscar',
+                  label: 'Search'.tr,
                   tooltip: 'Buscar Peliculas',
                 ),
                 BottomNavigationBarItem(
@@ -81,8 +81,23 @@ class Main extends StatelessWidget {
                           : const Color(0xFF67686D),
                     ),
                   ),
-                  label: 'Favoritas',
+                  label: 'Favorite'.tr,
                   tooltip: 'Tus Favoritas',
+                ),
+                BottomNavigationBarItem(
+                  icon: Container(
+                    margin: const EdgeInsets.only(bottom: 6),
+                    child: SvgPicture.asset(
+                      'assets/map.svg',
+                      height: 21,
+                      width: 21,
+                      color: controller.index.value == 2
+                          ? const Color(0xFF0296E5)
+                          : const Color(0xFF67686D),
+                    ),
+                  ),
+                  label: 'Map'.tr,
+                  tooltip: 'Mapa',
                 ),
               ],
             ),

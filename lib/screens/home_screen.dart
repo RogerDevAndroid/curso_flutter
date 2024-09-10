@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
 
   final MoviesController controller = Get.put(MoviesController());
   final SearchSimpleController searchController = Get.put(SearchSimpleController());
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

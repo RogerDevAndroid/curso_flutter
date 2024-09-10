@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:movies_app/screens/main.dart';
+import 'package:movies_app/screens/mapa_screen.dart';
+import 'package:movies_app/utils/LocaleString.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,17 +24,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFF242A32),
         textTheme: const TextTheme(
-          bodyText1: TextStyle(
+          bodyLarge: TextStyle(
             color: Colors.white,
             fontFamily: 'Poppins',
           ),
-          bodyText2: TextStyle(
+          bodyMedium: TextStyle(
             color: Colors.white,
             fontFamily: 'Poppins',
           ),
         ),
       ),
       home: Main(),
+      translations: LocaleString(),
+      locale: Get.deviceLocale,
     );
   }
 }
