@@ -4,7 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:movies_app/api/api_service.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-void main() => runApp(const MyAppMap());
+//void main() => runApp(const MyAppMap());
 
 class MyAppMap extends StatefulWidget {
   const MyAppMap({Key? key}) : super(key: key);
@@ -49,8 +49,10 @@ class _MyAppMapState extends State<MyAppMap> {
                   double.parse(tienda.latitud), double.parse(tienda.longitud)),
               infoWindow: InfoWindow(
                 title: tienda.nombre,
-                snippet: tienda.claseActividad,
+                snippet: tienda.ubicacion,
               ),
+                icon: BitmapDescriptor.defaultMarkerWithHue(
+                    BitmapDescriptor.hueGreen)
             );
 
             _markers.add(marker);
@@ -72,11 +74,17 @@ class _MyAppMapState extends State<MyAppMap> {
       }
     } else if (status.isGranted) {
       _getNearStore();
-    } else {}
+    } else if(status.isRestricted){
+      print('Ubicacion Denegada por Control Parental');
+    }
+    else {
+      //PorDefault
+    }
   }
 
   Future<void> _getCurrentLocation() async {
     try {
+
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
 
@@ -85,7 +93,7 @@ class _MyAppMapState extends State<MyAppMap> {
 
         _markers.add(Marker(
             markerId: const MarkerId('Mi ubicación'),
-            position: LatLng(position.latitude, position.longitude),
+            position: _center,
             infoWindow: const InfoWindow(
               title: "Mi ubicación",
             ),
@@ -95,7 +103,7 @@ class _MyAppMapState extends State<MyAppMap> {
         mapController.animateCamera(
           CameraUpdate.newCameraPosition(
             CameraPosition(
-              target: LatLng(position.latitude, position.longitude),
+              target: _center,
               zoom: 14.0,
             ),
           ),

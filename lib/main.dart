@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:movies_app/screens/main.dart';
 import 'package:movies_app/screens/mapa_screen.dart';
+import 'package:movies_app/utils/LocaleString.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +34,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: MyAppMap(),
+      home: Main(),
+      translations: LocaleString(),
+      locale: Get.deviceLocale,
     );
   }
 }
